@@ -4,121 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Speed Tester</title>
+<meta name="description" content="Privacy policy for the Speed Tester Android application by Cool App Helpdesk.">
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 720px;
-    margin: 2.5rem auto;
-    padding: 0 1.25rem;
-    line-height: 1.6;
-    color: #1f2937;
-    background: #ffffff;
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --text: #0f172a; --muted: #64748b;
+    --primary: #2563eb; --primary-soft: #dbeafe; --border: #e2e8f0;
+    --positive: #15803d; --positive-bg: #dcfce7;
   }
   @media (prefers-color-scheme: dark) {
-    body { color: #e5e7eb; background: #0f1117; }
-    a { color: #fb923c; }
-    h1, h2 { color: #f97316; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --text: #e2e8f0; --muted: #94a3b8;
+      --primary: #93c5fd; --primary-soft: #1e3a8a; --border: #334155;
+      --positive: #4ade80; --positive-bg: #14532d;
+    }
   }
-  h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
-  h2 { font-size: 1.25rem; margin-top: 2rem; color: #ea580c; }
-  p, li { font-size: 0.98rem; }
-  ul { padding-left: 1.4rem; }
-  .meta { color: #6b7280; font-size: 0.85rem; margin-bottom: 2rem; }
-  code { background: rgba(127,127,127,0.15); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
-  th, td { text-align: left; padding: 0.55rem 0.65rem; border-bottom: 1px solid rgba(127,127,127,0.3); font-size: 0.92rem; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 96px; }
+  header { border-radius: 16px; padding: 32px 28px; margin-bottom: 24px;
+    background: linear-gradient(135deg, #38bdf8 0%, #2563eb 55%, #1e3a8a 100%); color: #fff; }
+  header h1 { margin: 0 0 6px; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; }
+  header p { margin: 0; opacity: 0.92; font-size: 15px; }
+  .card { background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 26px; margin: 14px 0; }
+  h2 { font-size: 19px; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.005em; }
+  p, ul, ol { margin: 0 0 12px; }
+  ul, ol { padding-left: 22px; } li { margin-bottom: 6px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); background: var(--primary-soft); }
+  tr:last-child td { border-bottom: none; }
+  code { background: var(--primary-soft); padding: 1px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SFMono-Regular", Consolas, Menlo, monospace; }
+  a { color: var(--primary); text-decoration: none; } a:hover { text-decoration: underline; }
+  .badge { display: inline-block; background: var(--positive-bg); color: var(--positive);
+    font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+  footer { margin-top: 32px; text-align: center; color: var(--muted); font-size: 13px; }
+  @media (max-width: 480px) {
+    .wrap { padding: 24px 16px 64px; }
+    header { padding: 24px 20px; } header h1 { font-size: 24px; }
+    .card { padding: 18px 20px; } h2 { font-size: 17px; }
+    table { font-size: 13px; } th, td { padding: 8px 10px; }
+  }
 </style>
 </head>
 <body>
+<main class="wrap">
 
-<h1>Privacy Policy</h1>
-<p class="meta">Application: <strong>Speed Tester</strong> (package <code>coolapp.speedtest</code>) &middot; Effective date: 2026-05-11</p>
+<header>
+  <h1>Privacy Policy</h1>
+  <p>Speed Tester &middot; last updated <time datetime="2026-05-14">May 14, 2026</time></p>
+</header>
 
-<p>This Privacy Policy describes how the Speed Tester Android application ("the App", "we", "our") handles information when you use it. The App itself does not collect, store, or transmit any personal data about you. The only data exchanged with us-controlled systems is the test traffic required to measure your connection. The App does, however, display advertising provided by Google AdMob, and Google's SDK processes a limited set of device data described below.</p>
+<section class="card">
+  <h2>1. Summary</h2>
+  <p>Speed Tester (&ldquo;the app&rdquo;) is an internet speed measurement utility published by <strong>Cool App Helpdesk</strong>.</p>
+  <ul>
+    <li>The developer collects <strong>no personal data</strong> and operates no servers.</li>
+    <li>Speed measurements are performed by exchanging test traffic with well-known public endpoints (Cloudflare, Hetzner, OVH); your public IP is visible to those endpoints during the test (see section 5).</li>
+    <li>The app displays advertising provided by <strong>Google AdMob</strong>, which processes a limited set of device data on its own (see section 5).</li>
+  </ul>
+</section>
 
-<h2>1. Data we collect directly</h2>
-<p><strong>We (the developer of Speed Tester) do not collect any personal data.</strong> Specifically, the App does not collect, log, or transmit to us:</p>
-<ul>
-  <li>Your name, email address, phone number, or any identifier you provide.</li>
-  <li>Your IMEI, MAC address, or other persistent hardware identifiers.</li>
-  <li>Your precise or coarse location.</li>
-  <li>Contacts, calendar, photos, files, microphone, or camera data.</li>
-  <li>Crash reports, analytics events, or usage telemetry.</li>
-</ul>
-<p>The App contains no first-party analytics SDKs and no tracking libraries beyond the Google AdMob advertising SDK described in section 4.</p>
+<section class="card">
+  <h2>2. Data we collect</h2>
+  <p><strong>None.</strong> The developer does not collect personal data, telemetry, identifiers, device information, IP addresses, or usage analytics. There are no user accounts and the developer operates no servers that the app communicates with.</p>
+</section>
 
-<h2>2. Data we store on your device</h2>
-<p>The result of your most recent speed test (ping, download speed, upload speed, timestamp, and the public name of the test server) is held in the App's memory while the App is open, so it can be shown on the home screen. This data is <strong>never transmitted</strong> off the device and is discarded when the system reclaims the process.</p>
-<p>The App ships with a bundled list of public Speedtest.net server endpoints (<code>speedtest-servers.csv</code>) used to pick a low-latency test target. This list is read locally and is never updated over the network.</p>
+<section class="card">
+  <h2>3. Data stored on your device</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Where</th><th>Sent off device?</th></tr></thead>
+    <tbody>
+      <tr><td>Most recent test result (ping, download, upload, timestamp, server name)</td><td>App memory while open; discarded when the process ends</td><td><span class="badge">Never</span></td></tr>
+      <tr><td>Bundled list of public speed-test endpoints (<code>speedtest-servers.csv</code>)</td><td>App resources, read locally</td><td><span class="badge">Never</span> (not updated over the network)</td></tr>
+    </tbody>
+  </table>
+</section>
 
-<h2>3. Network traffic the App generates</h2>
-<p>To measure your connection, the App opens HTTPS connections to a small number of well-known public speed-test endpoints and exchanges bytes with them:</p>
-<table>
-  <tr><th>Endpoint</th><th>Purpose</th><th>What it sees</th></tr>
-  <tr><td><code>speed.cloudflare.com</code></td><td>Latency, upload, and fallback download measurement</td><td>Your public IP address, standard HTTP headers (User-Agent, the bytes uploaded/downloaded during the test)</td></tr>
-  <tr><td><code>speed.hetzner.de</code></td><td>Primary download measurement</td><td>Your public IP address, standard HTTP headers</td></tr>
-  <tr><td><code>proof.ovh.net</code></td><td>Download measurement (fallback only)</td><td>Your public IP address, standard HTTP headers</td></tr>
-</table>
-<p>These third parties operate the servers you transfer test bytes with. Like any HTTP request, your public IP address is visible to them. The App sends only the data required for the speed measurement — no identifiers, no account information, no device metadata beyond the User-Agent string. Each of these providers has its own privacy policy:</p>
-<ul>
-  <li>Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">https://www.cloudflare.com/privacypolicy/</a></li>
-  <li>Hetzner: <a href="https://www.hetzner.com/legal/privacy-policy" target="_blank" rel="noopener">https://www.hetzner.com/legal/privacy-policy</a></li>
-  <li>OVH: <a href="https://www.ovh.com/world/protection-personal-data/" target="_blank" rel="noopener">https://www.ovh.com/world/protection-personal-data/</a></li>
-</ul>
+<section class="card">
+  <h2>4. Permissions used</h2>
+  <table>
+    <thead><tr><th>Permission</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td><code>INTERNET</code></td><td>Open HTTPS connections to the speed-test endpoints and to Google AdMob.</td></tr>
+      <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Check that a network is available before starting a test.</td></tr>
+      <tr><td><code>AD_ID</code> (declared automatically by the AdMob SDK on Android 13+)</td><td>Read the advertising ID for the purposes described in section 5.</td></tr>
+    </tbody>
+  </table>
+  <p>The app does <strong>not</strong> request location, contacts, storage, microphone, camera, phone state, or any other sensitive permission.</p>
+</section>
 
-<h2>4. Advertising (Google AdMob)</h2>
-<p>The App is supported by advertising provided by Google AdMob. Two ad formats are used:</p>
-<ul>
-  <li><strong>Interstitial ads</strong> shown occasionally after a completed speed test (at most once every two tests, and never within sixty seconds of the previous ad).</li>
-  <li><strong>Rewarded video ads</strong> shown <em>only</em> when you tap the optional "Watch a short video → ad-free for 24 h" button. Watching this video disables interstitial ads for twenty-four hours.</li>
-</ul>
-<p>To serve these ads, Google AdMob processes data on its own, as an independent data controller. The data Google may receive includes:</p>
-<ul>
-  <li>Your device's advertising ID (a resettable identifier you control in your device settings).</li>
-  <li>Your IP address.</li>
-  <li>General device information (model, OS version, language, time zone).</li>
-  <li>Information about ad interactions (impressions, clicks, completion of rewarded videos).</li>
-  <li>An approximate location derived from your IP address.</li>
-</ul>
-<p>Google uses this data to serve, measure, and target advertising, as described in Google's own privacy policies. We do not receive any of this information; AdMob shares only aggregated revenue reports with us.</p>
-<p>You can:</p>
-<ul>
-  <li>Reset or delete your advertising ID at any time in <em>Settings &rarr; Privacy &rarr; Ads</em> on your device.</li>
-  <li>Opt out of personalised advertising on the same screen ("Delete advertising ID" on Android 12+, or "Opt out of Ads Personalization" on older versions).</li>
-  <li>In the European Economic Area, the United Kingdom, and Switzerland, the App shows a consent prompt powered by Google's User Messaging Platform on first launch where you can decline personalised ads. Non-personalised ads will still be shown.</li>
-</ul>
-<p>References:</p>
-<ul>
-  <li>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
-  <li>How Google uses information from sites/apps that use their services: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">https://policies.google.com/technologies/partner-sites</a></li>
-  <li>AdMob &amp; AdSense data disclosures: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">https://support.google.com/admob/answer/6128543</a></li>
-</ul>
+<section class="card">
+  <h2>5. Network activity and third parties</h2>
+  <p><strong>Speed-test endpoints.</strong> To measure your connection, the app opens HTTPS connections to a small number of well-known public speed-test endpoints and exchanges bytes with them:</p>
+  <table>
+    <thead><tr><th>Endpoint</th><th>Purpose</th><th>What it sees</th></tr></thead>
+    <tbody>
+      <tr><td><code>speed.cloudflare.com</code></td><td>Latency, upload, fallback download measurement</td><td>Your public IP, standard HTTP headers (User-Agent), and the bytes exchanged during the test</td></tr>
+      <tr><td><code>speed.hetzner.de</code></td><td>Primary download measurement</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>proof.ovh.net</code></td><td>Download measurement (fallback only)</td><td>Your public IP and standard HTTP headers</td></tr>
+    </tbody>
+  </table>
+  <p>These third parties operate the servers you exchange test bytes with. The app sends only the data required for the measurement &mdash; no identifiers, no account information, no device metadata beyond the User-Agent string. Each provider has its own privacy policy:</p>
+  <ul>
+    <li>Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></li>
+    <li>Hetzner: <a href="https://www.hetzner.com/legal/privacy-policy" target="_blank" rel="noopener">hetzner.com/legal/privacy-policy</a></li>
+    <li>OVH: <a href="https://www.ovh.com/world/protection-personal-data/" target="_blank" rel="noopener">ovh.com/world/protection-personal-data</a></li>
+  </ul>
+  <p><strong>Google AdMob.</strong> The app is supported by advertising provided by Google AdMob. Two ad formats are used:</p>
+  <ul>
+    <li><strong>Interstitial ads</strong> shown occasionally after a completed speed test (at most once every two tests, never within sixty seconds of the previous ad).</li>
+    <li><strong>Rewarded video ads</strong> shown only when you tap the optional &ldquo;Watch a short video &rarr; ad-free for 24&nbsp;h&rdquo; button.</li>
+  </ul>
+  <p>To serve these ads, Google AdMob processes data on its own, as an independent data controller. The data Google may receive includes:</p>
+  <ul>
+    <li>The device&rsquo;s advertising ID (a resettable identifier you control in your device settings).</li>
+    <li>Your IP address.</li>
+    <li>General device information (model, OS version, language, time zone).</li>
+    <li>Information about ad interactions (impressions, clicks, rewarded-video completion).</li>
+    <li>An approximate location derived from your IP address.</li>
+  </ul>
+  <p>The developer does not receive this data; AdMob shares only aggregated revenue reports. Relevant Google references:</p>
+  <ul>
+    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+    <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use their services</a></li>
+    <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob &amp; AdSense data disclosures</a></li>
+  </ul>
+  <p>You can reset or delete your advertising ID, and opt out of personalised ads, at any time in <em>Device Settings &rarr; Privacy &rarr; Ads</em>. In the European Economic Area, the United Kingdom, and Switzerland, the app shows a consent prompt powered by Google&rsquo;s User Messaging Platform on first launch where you may decline personalised advertising; non-personalised ads will still be shown.</p>
+</section>
 
-<h2>5. Permissions</h2>
-<p>The App declares the minimum permissions required to operate:</p>
-<table>
-  <tr><th>Permission</th><th>Why it is needed</th></tr>
-  <tr><td><code>INTERNET</code></td><td>Open HTTPS connections to the speed-test endpoints and to Google AdMob ad servers.</td></tr>
-  <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Determine that a network is available before starting a test.</td></tr>
-  <tr><td><code>AD_ID</code> (declared automatically by the AdMob SDK on Android 13+)</td><td>Read the advertising ID for the purposes described in section 4.</td></tr>
-</table>
-<p>The App does <strong>not</strong> request location, contacts, storage, microphone, camera, phone state, or any other sensitive permission.</p>
+<section class="card">
+  <h2>6. Children&rsquo;s privacy</h2>
+  <p>The app is suitable for general audiences and is not directed at children under 13. The developer does not knowingly collect data from children. AdMob is configured to serve only non-personalised ads to users who appear, via the consent prompt described above, to be in regions where children&rsquo;s privacy rules apply.</p>
+</section>
 
-<h2>6. Children's privacy</h2>
-<p>The App is suitable for general audiences and is not directed at children under 13. We do not knowingly collect data from children. AdMob is configured to serve only non-personalised ads to users who appear to be in regions where Children's Online Privacy Protection (COPPA, GDPR-K) applies via the consent prompt described in section 4.</p>
+<section class="card">
+  <h2>7. Data retention and deletion</h2>
+  <p>The app retains the most recent test result only in memory while it is open; closing the app discards it. No persistent test history is kept. Uninstalling the app removes any remaining app data.</p>
+</section>
 
-<h2>7. Data sharing and sale</h2>
-<p>We do not sell or rent any data. We do not directly receive any user data to share. The processing of advertising data by Google AdMob is governed by Google's own policies linked in section 4.</p>
+<section class="card">
+  <h2>8. Security</h2>
+  <p>All speed-test traffic uses HTTPS (TLS). The app does not store credentials or persistent identifiers locally. The app is distributed through the Google Play Store, which verifies the developer signing key on every update.</p>
+</section>
 
-<h2>8. Security</h2>
-<p>All speed-test traffic uses HTTPS (TLS). The App does not store credentials or persistent identifiers locally.</p>
+<section class="card">
+  <h2>9. Changes to this policy</h2>
+  <p>If any material aspect of how the app handles data ever changes, this page will be updated and the &ldquo;last updated&rdquo; date above will be bumped. Continued use after a change constitutes acceptance.</p>
+</section>
 
-<h2>9. Changes to this policy</h2>
-<p>If we change how the App handles data, this policy will be updated and the "Effective date" at the top of the page will change. Continued use of the App after such a change indicates acceptance of the updated policy.</p>
+<section class="card">
+  <h2>10. Contact</h2>
+  <p>Questions or feedback? Email <a href="mailto:coolapphelpdesk@gmail.com">coolapphelpdesk@gmail.com</a>.</p>
+</section>
 
-<h2>10. Contact</h2>
-<p>If you have questions about this policy, contact us at <a href="mailto:coolapphelpdesk@gmail.com">coolapphelpdesk@gmail.com</a>.</p>
+<footer>&copy; 2026 Cool App Helpdesk &middot; Speed Tester</footer>
 
+</main>
 </body>
 </html>
