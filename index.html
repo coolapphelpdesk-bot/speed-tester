@@ -56,22 +56,36 @@
 
 <header>
   <h1>Privacy Policy</h1>
-  <p>Speed Tester &middot; last updated <time datetime="2026-05-14">May 14, 2026</time></p>
+  <p>Speed Tester &middot; last updated <time datetime="2026-07-28">Jul 28, 2026</time></p>
 </header>
 
 <section class="card">
   <h2>1. Summary</h2>
   <p>Speed Tester (&ldquo;the app&rdquo;) is an internet speed measurement utility published by <strong>Cool App Helpdesk</strong>.</p>
   <ul>
-    <li>The developer collects <strong>no personal data</strong> and operates no servers.</li>
-    <li>Speed measurements are performed by exchanging test traffic with well-known public endpoints (Cloudflare, Hetzner, OVH); your public IP is visible to those endpoints during the test (see section 5).</li>
-    <li>The app displays advertising provided by <strong>Google AdMob</strong>, which processes a limited set of device data on its own (see section 5).</li>
+    <li>The app collects <strong>no personal data automatically</strong>. The only information that reaches the developer is what you deliberately type into the in-app feedback form (see section 2).</li>
+    <li>Speed measurements are performed by exchanging test traffic with well-known public endpoints (Cloudflare, Hetzner, Bouygues, OVH, Tele2); your public IP is visible to those endpoints during the test (see section 5).</li>
+    <li>Your test history is stored <strong>on your device only</strong> and is never uploaded (see section 3).</li>
+    <li>The app asks for a location permission for <strong>one purpose only</strong>: reading the name of the Wi-Fi network you are testing. Your location is never read, derived, stored, or shared (see section 4).</li>
+    <li>The app currently shows <strong>no advertising</strong> (see section 5).</li>
   </ul>
 </section>
 
 <section class="card">
   <h2>2. Data we collect</h2>
-  <p><strong>None.</strong> The developer does not collect personal data, telemetry, identifiers, device information, IP addresses, or usage analytics. There are no user accounts and the developer operates no servers that the app communicates with.</p>
+  <p><strong>Nothing automatically.</strong> The app contains no analytics, no telemetry, no crash reporting, no advertising identifiers, and no user accounts. Nothing about your usage or your test results is ever sent to the developer.</p>
+  <p><strong>One exception, entirely under your control: the feedback form.</strong> If you open <em>Feedback</em> from the app&rsquo;s menu and tap Send, the following is transmitted to a server operated by the developer:</p>
+  <table>
+    <thead><tr><th>Field</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Feedback type, subject and message</td><td>What you type</td></tr>
+      <tr><td>Contact details (email or similar)</td><td>What you type &mdash; <strong>optional</strong>, leave blank to stay anonymous</td></tr>
+      <tr><td>App version and version code</td><td>Automatic, so a report can be matched to a build</td></tr>
+      <tr><td>Device model and Android version</td><td>Automatic, to reproduce reported problems</td></tr>
+      <tr><td>Submission timestamp</td><td>Automatic</td></tr>
+    </tbody>
+  </table>
+  <p>Nothing is sent unless you tap Send. No test results, no network names, and no history are included. The endpoint is a Google Cloud Run service in the EU (<code>europe-west1</code>) operated by Cool App Helpdesk over HTTPS; submissions are used only to answer and act on your message, are never sold or shared, and can be deleted on request by emailing the address in section&nbsp;10.</p>
 </section>
 
 <section class="card">
@@ -79,10 +93,13 @@
   <table>
     <thead><tr><th>Item</th><th>Where</th><th>Sent off device?</th></tr></thead>
     <tbody>
-      <tr><td>Most recent test result (ping, download, upload, timestamp, server name)</td><td>App memory while open; discarded when the process ends</td><td><span class="badge">Never</span></td></tr>
+      <tr><td>Test history &mdash; ping, jitter, download, upload, data used, timestamp, server name and country, and the name of the network you tested on</td><td>A private database on your device (<code>speedtest.db</code>)</td><td><span class="badge">Never</span></td></tr>
+      <tr><td>Notes you attach to a saved result</td><td>The same private database</td><td><span class="badge">Never</span></td></tr>
+      <tr><td>App settings and your chosen language</td><td>Private app preferences</td><td><span class="badge">Never</span></td></tr>
       <tr><td>Bundled list of public speed-test endpoints (<code>speedtest-servers.csv</code>)</td><td>App resources, read locally</td><td><span class="badge">Never</span> (not updated over the network)</td></tr>
     </tbody>
   </table>
+  <p>This data stays in the app&rsquo;s private storage, which other apps cannot read. It leaves your device only if <em>you</em> choose to share it &mdash; the &ldquo;share as image&rdquo; and &ldquo;export CSV&rdquo; features hand a file to whichever app you pick from the Android share sheet. Note that a shared result image or CSV may include the Wi-Fi network name and your notes.</p>
 </section>
 
 <section class="card">
@@ -90,12 +107,16 @@
   <table>
     <thead><tr><th>Permission</th><th>Reason</th></tr></thead>
     <tbody>
-      <tr><td><code>INTERNET</code></td><td>Open HTTPS connections to the speed-test endpoints and to Google AdMob.</td></tr>
-      <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Check that a network is available before starting a test.</td></tr>
-      <tr><td><code>AD_ID</code> (declared automatically by the AdMob SDK on Android 13+)</td><td>Read the advertising ID for the purposes described in section 5.</td></tr>
+      <tr><td><code>INTERNET</code></td><td>Open connections to the speed-test endpoints.</td></tr>
+      <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Check that a network is available, and whether it is Wi-Fi, mobile or metered, before starting a test.</td></tr>
+      <tr><td><code>ACCESS_WIFI_STATE</code></td><td>Read the name of the connected Wi-Fi network.</td></tr>
+      <tr><td><code>WAKE_LOCK</code></td><td>Keep the device awake for the few seconds a test is running so the measurement is not cut short.</td></tr>
+      <tr><td><code>ACCESS_FINE_LOCATION</code> / <code>ACCESS_COARSE_LOCATION</code><br><em>Asked only when you request it</em></td><td>Since Android&nbsp;10 the operating system will not reveal the Wi-Fi network name to an app unless it holds a location permission. This is the <strong>only</strong> reason the app requests it.</td></tr>
+      <tr><td><code>AD_ID</code> and <code>ACCESS_ADSERVICES_*</code></td><td>Declared automatically by the bundled Google AdMob library. Advertising is currently switched off and the library is never started, so these are not exercised (see section 5).</td></tr>
     </tbody>
   </table>
-  <p>The app does <strong>not</strong> request location, contacts, storage, microphone, camera, phone state, or any other sensitive permission.</p>
+  <p><strong>About the location permission.</strong> The app contains no code that reads your location. It never calls any Android location service, never requests GPS or network positioning, and never stores or transmits coordinates &mdash; the permission is used solely as the key that unlocks the Wi-Fi network name. It is <strong>never requested on startup</strong>: the test screen simply shows &ldquo;Wi-Fi&rdquo;, and only if you tap <em>Show name</em> does the app explain why and then ask. If you decline, choose &ldquo;Approximate&rdquo; rather than &ldquo;Precise&rdquo;, or have device location switched off, everything else in the app works exactly as before and the network is shown as plain &ldquo;Wi-Fi&rdquo;. You can revoke the permission at any time in <em>Settings &rarr; Apps &rarr; Speed Tester &rarr; Permissions</em>.</p>
+  <p>The app does <strong>not</strong> request contacts, storage, microphone, camera, or phone state.</p>
 </section>
 
 <section class="card">
@@ -105,51 +126,44 @@
     <thead><tr><th>Endpoint</th><th>Purpose</th><th>What it sees</th></tr></thead>
     <tbody>
       <tr><td><code>speed.cloudflare.com</code></td><td>Latency, upload, fallback download measurement</td><td>Your public IP, standard HTTP headers (User-Agent), and the bytes exchanged during the test</td></tr>
-      <tr><td><code>speed.hetzner.de</code></td><td>Primary download measurement</td><td>Your public IP and standard HTTP headers</td></tr>
-      <tr><td><code>proof.ovh.net</code></td><td>Download measurement (fallback only)</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>speed.hetzner.de</code></td><td>Download measurement</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>bouygues.testdebit.info</code></td><td>Download measurement (fallback)</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>proof.ovh.net</code></td><td>Download measurement (fallback)</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>speedtest.tele2.net</code></td><td>Download measurement (last resort)</td><td>Your public IP and standard HTTP headers</td></tr>
+      <tr><td><code>ip-api.com</code></td><td>Estimates your approximate area from your public IP so the app can name the nearest test server</td><td>Your public IP. See the note below.</td></tr>
     </tbody>
   </table>
+  <p><strong>About <code>ip-api.com</code>.</strong> Before each test the app asks this third-party service to convert your public IP address into approximate coordinates, which are used only to pick and label the nearest server. The result is used in memory and is never saved to your history or sent to the developer. Two things you should know: this lookup is made over plain <code>http</code>, so the approximate coordinates returned are not encrypted in transit, and your IP address is disclosed to ip-api.com, an independent operator with its own <a href="https://ip-api.com/docs/legal" target="_blank" rel="noopener">terms and privacy statement</a>. This happens whether or not you grant the location permission described in section&nbsp;4 &mdash; the two are unrelated.</p>
   <p>These third parties operate the servers you exchange test bytes with. The app sends only the data required for the measurement &mdash; no identifiers, no account information, no device metadata beyond the User-Agent string. Each provider has its own privacy policy:</p>
   <ul>
     <li>Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></li>
     <li>Hetzner: <a href="https://www.hetzner.com/legal/privacy-policy" target="_blank" rel="noopener">hetzner.com/legal/privacy-policy</a></li>
     <li>OVH: <a href="https://www.ovh.com/world/protection-personal-data/" target="_blank" rel="noopener">ovh.com/world/protection-personal-data</a></li>
   </ul>
-  <p><strong>Google AdMob.</strong> The app is supported by advertising provided by Google AdMob. Two ad formats are used:</p>
-  <ul>
-    <li><strong>Interstitial ads</strong> shown occasionally after a completed speed test (at most once every two tests, never within sixty seconds of the previous ad).</li>
-    <li><strong>Rewarded video ads</strong> shown only when you tap the optional &ldquo;Watch a short video &rarr; ad-free for 24&nbsp;h&rdquo; button.</li>
-  </ul>
-  <p>To serve these ads, Google AdMob processes data on its own, as an independent data controller. The data Google may receive includes:</p>
-  <ul>
-    <li>The device&rsquo;s advertising ID (a resettable identifier you control in your device settings).</li>
-    <li>Your IP address.</li>
-    <li>General device information (model, OS version, language, time zone).</li>
-    <li>Information about ad interactions (impressions, clicks, rewarded-video completion).</li>
-    <li>An approximate location derived from your IP address.</li>
-  </ul>
-  <p>The developer does not receive this data; AdMob shares only aggregated revenue reports. Relevant Google references:</p>
+  <p><strong>Feedback.</strong> If you use the in-app feedback form, its contents are sent to a developer-operated Google Cloud Run endpoint in the EU over HTTPS. This is the only developer-operated server the app ever contacts, and only when you tap Send. See section&nbsp;2 for exactly what is included.</p>
+  <p><strong>Advertising &mdash; currently switched off.</strong> The app ships with the Google AdMob library, but advertising is <strong>disabled</strong> in the current version: the library is never initialised, no ad is ever requested or shown, no advertising ID is read, and no consent prompt is displayed. Because the library is bundled, Google Play still lists the advertising permissions noted in section&nbsp;4; they are inert.</p>
+  <p>If advertising is re-enabled in a future version, this policy will be updated <em>before</em> that version is released, the &ldquo;last updated&rdquo; date will be bumped, and the relevant Google disclosures will be restored here:</p>
   <ul>
     <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-    <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use their services</a></li>
     <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob &amp; AdSense data disclosures</a></li>
   </ul>
-  <p>You can reset or delete your advertising ID, and opt out of personalised ads, at any time in <em>Device Settings &rarr; Privacy &rarr; Ads</em>. In the European Economic Area, the United Kingdom, and Switzerland, the app shows a consent prompt powered by Google&rsquo;s User Messaging Platform on first launch where you may decline personalised advertising; non-personalised ads will still be shown.</p>
 </section>
 
 <section class="card">
   <h2>6. Children&rsquo;s privacy</h2>
-  <p>The app is suitable for general audiences and is not directed at children under 13. The developer does not knowingly collect data from children. AdMob is configured to serve only non-personalised ads to users who appear, via the consent prompt described above, to be in regions where children&rsquo;s privacy rules apply.</p>
+  <p>The app is suitable for general audiences and is not directed at children under 13. The developer does not knowingly collect data from children. The app shows no advertising and gathers nothing automatically, so no profiling of any user &mdash; child or adult &mdash; takes place. If a child sends a message through the feedback form and you would like it removed, email the address in section&nbsp;10 and it will be deleted.</p>
 </section>
 
 <section class="card">
   <h2>7. Data retention and deletion</h2>
-  <p>The app retains the most recent test result only in memory while it is open; closing the app discards it. No persistent test history is kept. Uninstalling the app removes any remaining app data.</p>
+  <p><strong>On your device.</strong> Your test history stays on your device until you remove it. Individual results can be deleted from the History screen, and uninstalling the app erases the database, your notes and your settings completely. The developer has no copy and therefore cannot recover it for you.</p>
+  <p><strong>Feedback submissions.</strong> Messages sent through the feedback form are kept only as long as needed to answer and act on them. To have yours deleted, email the address in section&nbsp;10 from the contact details you supplied, or describe the message if you sent it anonymously.</p>
 </section>
 
 <section class="card">
   <h2>8. Security</h2>
-  <p>All speed-test traffic uses HTTPS (TLS). The app does not store credentials or persistent identifiers locally. The app is distributed through the Google Play Store, which verifies the developer signing key on every update.</p>
+  <p>Feedback submissions and all but one of the network calls use HTTPS (TLS). The single exception is the <code>ip-api.com</code> lookup described in section&nbsp;5, which is made over plain <code>http</code>; it carries no personal data beyond your IP address, which is visible to your network operator in any case. One download-measurement fallback (<code>speedtest.tele2.net</code>) is also plain <code>http</code> and exchanges only meaningless test bytes.</p>
+  <p>The app stores no credentials and no persistent identifiers. Its database and settings live in private app storage that other apps cannot read. The app is distributed through the Google Play Store, which verifies the developer signing key on every update.</p>
 </section>
 
 <section class="card">
